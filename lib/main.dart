@@ -180,7 +180,7 @@ class _TableBasicsExampleState extends State<TableBasicsExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('チェックシート'),
+        title: Text('チェックシート '),
       ),
       body: Container(
         child: ListView(
