@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "301210473001",
+    "project_id": "life-change-pj-app",
+    "storage_bucket": "life-change-pj-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301210473001:android:70e9a7520f2f16fe630238",
+        "android_client_info": {
+          "package_name": "com.harryfox.life_change_pj_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "301210473001-hv85s42egodkkte5kn9ho4gqa71fbo3i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1JUZ5PdBshqC5ufgquOSqHXAglh3CpiM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "301210473001-hv85s42egodkkte5kn9ho4gqa71fbo3i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
