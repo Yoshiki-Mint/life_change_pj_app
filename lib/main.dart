@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:life_change_pj_app/book_list_page.dart';
 import 'package:life_change_pj_app/next_page.dart';
 import 'package:table_calendar/table_calendar.dart';
 // import 'dart:developer';
@@ -6,8 +7,18 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+bool USE_FIRESTORE_EMULATOR = false;
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(); // ここ大事！
+  if (USE_FIRESTORE_EMULATOR) {
+    FirebaseFirestore.instance.settings = const Settings(
+      host: 'localhost:8080',
+      sslEnabled: false,
+      persistenceEnabled: false,
+    );
+  }
   runApp(MyApp());
 }
 
@@ -413,53 +424,53 @@ class _TableBasicsExampleState extends State<TableBasicsExample> {
               onChanged: _handleCheckbox12,
             ),
 
-            new CheckboxListTile(
-              activeColor: Colors.blue,
-              title: TextField(
-                decoration: InputDecoration(
-                  //border: OutlineInputBorder(),
-                    hintText: '13.チェック項目'
-                ),
-                onChanged: (text) {
-                  _checkList13 = text;
-                },
-              ),
-              controlAffinity: ListTileControlAffinity.leading,
-              value: _flag13,
-              onChanged: _handleCheckbox13,
-            ),
-
-            new CheckboxListTile(
-              activeColor: Colors.blue,
-              title: TextField(
-                decoration: InputDecoration(
-                  //border: OutlineInputBorder(),
-                    hintText: '14.チェック項目'
-                ),
-                onChanged: (text) {
-                  _checkList14 = text;
-                },
-              ),
-              controlAffinity: ListTileControlAffinity.leading,
-              value: _flag14,
-              onChanged: _handleCheckbox14,
-            ),
-
-            new CheckboxListTile(
-              activeColor: Colors.blue,
-              title: TextField(
-                decoration: InputDecoration(
-                  //border: OutlineInputBorder(),
-                    hintText: '15.チェック項目'
-                ),
-                onChanged: (text) {
-                  _checkList15 = text;
-                },
-              ),
-              controlAffinity: ListTileControlAffinity.leading,
-              value: _flag15,
-              onChanged: _handleCheckbox15,
-            ),
+ //           new CheckboxListTile(
+ //             activeColor: Colors.blue,
+ //             title: TextField(
+ //               decoration: InputDecoration(
+ //                 //border: OutlineInputBorder(),
+ //                   hintText: '13.チェック項目'
+ //               ),
+ //               onChanged: (text) {
+ //                 _checkList13 = text;
+ //               },
+ //             ),
+ //             controlAffinity: ListTileControlAffinity.leading,
+ //             value: _flag13,
+ //             onChanged: _handleCheckbox13,
+ //           ),
+//
+ //           new CheckboxListTile(
+ //             activeColor: Colors.blue,
+ //             title: TextField(
+ //               decoration: InputDecoration(
+ //                 //border: OutlineInputBorder(),
+ //                   hintText: '14.チェック項目'
+ //               ),
+ //               onChanged: (text) {
+ //                 _checkList14 = text;
+ //               },
+ //             ),
+ //             controlAffinity: ListTileControlAffinity.leading,
+ //             value: _flag14,
+ //             onChanged: _handleCheckbox14,
+ //           ),
+//
+ //           new CheckboxListTile(
+ //             activeColor: Colors.blue,
+ //             title: TextField(
+ //               decoration: InputDecoration(
+ //                 //border: OutlineInputBorder(),
+ //                   hintText: '15.チェック項目'
+ //               ),
+ //               onChanged: (text) {
+ //                 _checkList15 = text;
+ //               },
+ //             ),
+ //             controlAffinity: ListTileControlAffinity.leading,
+ //             value: _flag15,
+ //             onChanged: _handleCheckbox15,
+ //           ),
 
             Container(
               //width: double.infinity,
@@ -477,6 +488,19 @@ class _TableBasicsExampleState extends State<TableBasicsExample> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => nextPage(' ')
+                        ),
+                      );
+                      //text = result;
+                      //print (result);
+                    },
+                  ),
+                  RaisedButton(
+                    child: Text('次へ'),
+                    onPressed:  () async{
+                      final result = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BookList()
                         ),
                       );
                       //text = result;
